@@ -27,10 +27,11 @@ const Divider = () => {
             width={320} 
             message={'Create account'} 
             height={50} 
-            backgroundColor="#8c63d2" 
+            backgroundColor="#618BFF" 
             color="white" 
             fontSize={18} 
             onPress={() => navigation.navigate('Homepage')}
+            borderRadius={8}
           /> 
           <View style={styles.textContainer}>
             <Text style={styles.login}>Already have an account?</Text>
@@ -42,6 +43,7 @@ const Divider = () => {
               color="#8c63d2" 
               fontSize={12} 
               onPress={() => navigation.navigate('Onboarding')}
+              borderRadius={18}
             /> 
           </View>
         </View>
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     paddingBottom: 100,
   },
   content: {
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
   },
   headingOne: {
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
     fontSize: 32,
     paddingBottom: 32,
     lineHeight: 40,
