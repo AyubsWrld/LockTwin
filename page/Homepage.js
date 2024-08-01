@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
 import Card from '../components/Card.js';
 import CardSmall from '../components/CardSmall.js';
 import ProfileImage from '../assets/icons/Profile.png';
@@ -14,6 +14,20 @@ const getFormattedDate = () => {
 };
 
 export default function Homepage() {
+  const [lockedApps, setLockedApps] = useState([
+    { appName: 'Instagram', icon: Instagram },
+    { appName: 'Snapchat', icon: Snapchat },
+    { appName: 'TikTok', icon: TikTok },
+    { appName: 'Behance' },
+    { appName: 'Instagram' },
+  ]);
+
+  // Function to add a new CardSmall component
+  const addCardSmall = () => {
+    const newApp = { appName: 'New App' }; // Placeholder for new app
+    setLockedApps([...lockedApps, newApp]);
+  };
+
   const currentDate = getFormattedDate();
 
   return (
@@ -40,12 +54,15 @@ export default function Homepage() {
       <View style={styles.rowTwo}>
         <Text style={styles.rowTwoHeading}>Locked Applications</Text>
         <View style={styles.lockedCardsContainer}>
-          <CardSmall  appName={'Instagram'}  icon={Instagram}/>
-          <CardSmall  appName={'Snapchat'}  icon={Snapchat}/>
-          <CardSmall  appName={'TikTok'}  icon={TikTok}/>
-          <CardSmall  appName={'Behance'}/>
-          <CardSmall  appName={'Instagram'}/>
+          {lockedApps.map((app, index) => (
+            <CardSmall
+              key={index}
+              appName={app.appName}
+              icon={app.icon}
+            />
+          ))}
         </View>
+        <Button title="Add Application" onPress={addCardSmall} />
       </View>
       {/* ------------------------------------------------------------------- Row Two --------------------------------------------------------------------------  */}
     </ScrollView>
