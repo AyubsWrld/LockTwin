@@ -1,41 +1,27 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function ButtonCustom(props) {
-  const buttonStyle = [styles.button, {
-    width: props.width,
-    height: props.height,
-    backgroundColor: props.backgroundColor || 'white',
-  }];
-
-  const buttonTextStyle = [styles.buttonText, {
-    color: props.color || 'black',
-    fontSize: props.fontSize || 16,
-  }];
-
+const ButtonCustom = ({ width, message, height, backgroundColor, color, fontSize, onPress }) => {
   return (
-    <TouchableOpacity style={buttonStyle} onPress={props.onClick}>
-      <View style={styles.buttonContent}>
-        <Text style={buttonTextStyle}>{props.message}</Text>
-      </View>
+    <TouchableOpacity
+      style={[styles.button, { width, height, backgroundColor }]}
+      onPress={onPress}
+    >
+      <Text style={[styles.text, { color, fontSize }]}>{message}</Text>
     </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   button: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    borderRadius: 10,
-    justifyContent: 'center',
     alignItems: 'center',
-  },
-  buttonContent: {
-    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    borderRadius: 12,
+    margin: 10,
   },
-  buttonText: {
+  text: {
     textAlign: 'center',
-    fontWeight: 'bold',
   },
 });
+
+export default ButtonCustom;

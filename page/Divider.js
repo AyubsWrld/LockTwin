@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import { StyleSheet, Text, View, Animated, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import ButtonCustom from '../components/ButtonCustom.js';
 
 const Divider = () => {
+  const navigation = useNavigation();
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -28,6 +30,7 @@ const Divider = () => {
             backgroundColor="#8c63d2" 
             color="white" 
             fontSize={18} 
+            onPress={() => navigation.navigate('Homepage')}
           /> 
           <View style={styles.textContainer}>
             <Text style={styles.login}>Already have an account?</Text>
@@ -38,6 +41,7 @@ const Divider = () => {
               backgroundColor="transparent" 
               color="#8c63d2" 
               fontSize={12} 
+              onPress={() => navigation.navigate('Onboarding')}
             /> 
           </View>
         </View>
@@ -86,6 +90,6 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 12,
-    marginRight: 4,
+    marginRight: 0,
   },
 });
